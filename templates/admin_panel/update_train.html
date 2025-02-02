@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Train Schedule</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'admin_panel/styles.css' %}">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Update Train Schedule</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Update Train</button>
+        </form>
+        <a href="{% url 'add_train' %}">Add New Train</a>
+    </div>
+</body>
+</html>

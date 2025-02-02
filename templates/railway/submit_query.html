@@ -1,0 +1,12 @@
+<!-- submit_query.html -->
+<h2>Submit a Query</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+    <div align="center">
+        <form action="{% url 'home' %}" method="get">
+            <button type="submit" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer;">Go to Home Page</button>
+        </form>
+    </div>
+</form>

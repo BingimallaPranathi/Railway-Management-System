@@ -1,0 +1,37 @@
+<!-- templates/railway/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Home{% endblock %}</title>
+    <style>
+        .top-right-corner {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 18px;
+            color: #555;
+            font-family: Arial, sans-serif;
+        }
+        .main-content {
+            padding-top: 50px; /* Adjust padding if needed */
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-right-corner">
+        {% if user.is_authenticated %}
+            Hey, {{ user.username }}!
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+        {% endif %}
+    </div>
+
+    <!-- Main content area where individual page content will appear -->
+    <div class="main-content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

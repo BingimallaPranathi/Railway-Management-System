@@ -1,0 +1,20 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Details</title>
+</head>
+<body>
+    <h2>Booking Details</h2>
+    <p>User Name: {{ booking.user_name }}</p>
+    <p>Email: {{ booking.email }}</p>
+    <p>Travel Date: {{ booking.date|date:"Y-m-d" }}</p>
+    <p>Number of Tickets: {{ booking.number_of_tickets }}</p>
+    <p>Train Number: {{ booking.train_number }}</p>
+    <p>From: {{ booking.source }}</p>
+    <p>To: {{ booking.destination }}</p>
+    <p>Class: {{ booking.travel_class }}</p>
+</body>
+</html>

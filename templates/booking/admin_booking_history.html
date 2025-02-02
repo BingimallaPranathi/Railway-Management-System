@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Booking History</title>
+    <link rel="stylesheet" href="{% static 'booking/style.css' %}">
+</head>
+<body>
+    <h2>Your Booking History</h2>
+
+    {% if bookings %}
+        <table>
+            <tr>
+                <th>Train Number</th>
+                <th>Travel Date</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Class</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            {% for booking in bookings %}
+                <tr>
+                    <td>{{ booking.train_number }}</td>
+                    <td>{{ booking.date|date:"Y-m-d" }}</td>
+                    <td>{{ booking.source }}</td>
+                    <td>{{ booking.destination }}</td>
+                    <td>{{ booking.travel_class }}</td>
+                    <td>{{ booking.email }}</td>
+                    <td>{{ booking.status }}</td>
+                    <td>
+                        {% if booking.status != 'Cancelled' %}
+                            <a href="{% url 'cancel_booking' booking.id %}">Cancel</a>
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No bookings found.</p>
+    {% endif %}
+</body>
+</html>
